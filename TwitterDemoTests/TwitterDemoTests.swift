@@ -21,16 +21,61 @@ class TwitterDemoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLoginViewUserIsEmpty() {
+        let loginViewController = LoginViewController()
+        let loginButton = UIButton()
+        let userName = UITextField()
+        
+        userName.text = ""
+        loginViewController.userName = userName
+        loginViewController.loginBtnPressed(loginButton)
+        
+        XCTAssertEqual(UIColor.red, loginViewController.userName.backgroundColor)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testLoginViewUserIsValid() {
+        let loginViewController = LoginViewController()
+        let loginButton = UIButton()
+        let userName = UITextField()
+        let userPassword = UITextField()
+        
+        userName.text = "test"
+        userPassword.text = ""
+        loginViewController.userName = userName
+        loginViewController.password = userPassword
+        loginViewController.loginBtnPressed(loginButton)
+        
+        XCTAssertNotEqual(UIColor.red, loginViewController.userName.backgroundColor)
+    }
+    
+    func testLoginViewPasswordIsEmpty() {
+        let loginViewController = LoginViewController()
+        let loginButton = UIButton()
+        let userName = UITextField()
+        let userPassword = UITextField()
+        
+        userName.text = "test"
+        userPassword.text = ""
+        loginViewController.userName = userName
+        loginViewController.password = userPassword
+        loginViewController.loginBtnPressed(loginButton)
+
+        XCTAssertEqual(UIColor.red, loginViewController.password.backgroundColor)
+    }
+    
+    func testLoginViewPasswordIsValid() {
+        let loginViewController = LoginViewController()
+        let loginButton = UIButton()
+        let userName = UITextField()
+        let userPassword = UITextField()
+        
+        userName.text = "test"
+        userPassword.text = "test"
+        loginViewController.userName = userName
+        loginViewController.password = userPassword
+        loginViewController.loginBtnPressed(loginButton)
+        
+        XCTAssertNotEqual(UIColor.red, loginViewController.password.backgroundColor)
     }
     
 }
