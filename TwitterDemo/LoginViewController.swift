@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import STTwitter
 
 class LoginViewController: UIViewController {
     
@@ -41,6 +42,25 @@ class LoginViewController: UIViewController {
             self.warningLabel.isHidden = false
             return
         }
+        
+        let twitter = STTwitterAPI(oAuthConsumerKey: "erRX64spTPkdyzqxbAkW9OFa1",
+                                   consumerSecret: "fdys3G9u9OGqoqETty9uxcGtb64YKDaOHxHhenNCRCsoqq1qL5",
+                                   oauthToken: "104355235-oBHSRpnycmA5brEQgYwwkTaRlehFneZwlMnYTxP5",
+                                   oauthTokenSecret: "DvsQBTuSzsId9cH9tNKgkIziZM0c49vhkUrHtZIuoN819")
+        
+        twitter!.verifyCredentials(userSuccessBlock: {(username, userId) -> Void
+            in
+            print(username!, userId!)}) {(error) -> Void in
+                print(error!)
+        }
+        
+        // This is not possible at the moment
+        /*let twitter = STTwitterAPI(oAuthConsumerName: nil,
+                                   consumerKey: "erRX64spTPkdyzqxbAkW9OFa1",
+                                   consumerSecret: "fdys3G9u9OGqoqETty9uxcGtb64YKDaOHxHhenNCRCsoqq1qL5",
+                                   username: user,
+                                   password: userPassword)*/
+    
     }
     
     /* When the user start typing this method clean the warning in the test 
