@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="115.94202898550725" y="123.09782608695653"/>
         </scene>
-        <!--Item-->
+        <!--Followers-->
         <scene sceneID="732-wZ-9OE">
             <objects>
                 <viewController id="gRd-KP-AAW" customClass="FollowersViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -118,7 +118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JUK-Hf-OkH">
-                                <rect key="frame" x="0.0" y="24" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="543"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -126,7 +126,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cyC-Yx-hgY" id="Fq4-GC-05m">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-mY-63l">
@@ -167,41 +167,95 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="gRd-KP-AAW" id="m2Z-qv-bzb"/>
-                                    <outlet property="delegate" destination="gRd-KP-AAW" id="TAV-5p-ipD"/>
-                                </connections>
                             </tableView>
                         </subviews>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="YMz-x5-wXK"/>
+                    <tabBarItem key="tabBarItem" title="Followers" image="followers" selectedImage="followersSelected" id="YMz-x5-wXK"/>
                     <connections>
                         <outlet property="followers" destination="JUK-Hf-OkH" id="BZA-Yz-BCu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jNy-ig-bke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2483" y="1162"/>
+            <point key="canvasLocation" x="2483" y="1433"/>
         </scene>
-        <!--Item 2-->
+        <!--Publish-->
         <scene sceneID="z1v-8n-wfo">
             <objects>
                 <viewController id="oST-dC-D6E" customClass="PublishViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mxS-R4-aij"/>
-                        <viewControllerLayoutGuide type="bottom" id="J5h-YQ-264"/>
+                        <viewControllerLayoutGuide type="top" id="ySY-Qd-Ma2"/>
+                        <viewControllerLayoutGuide type="bottom" id="xn8-mx-h6z"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9cS-GA-1ga">
+                    <view key="view" contentMode="scaleToFill" id="9sZ-pV-mi4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e5l-ZS-CZh">
+                                <rect key="frame" x="20" y="8" width="280" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="JPq-EF-BWz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oST-dC-D6E" id="4UC-R3-tWw"/>
+                                </connections>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iup-oU-lVr">
+                                <rect key="frame" x="12" y="120" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Era-Ps-7BR"/>
+                                    <constraint firstAttribute="width" constant="49" id="amQ-2b-eVF"/>
+                                </constraints>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Znb-vr-iHJ">
+                                <rect key="frame" x="73" y="120" width="227" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="jg3-hC-5vT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-Xw-Xyf">
+                                <rect key="frame" x="115" y="196" width="90" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="HMb-if-FaX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Publish"/>
+                                <connections>
+                                    <action selector="publishTweet:" destination="oST-dC-D6E" eventType="touchUpInside" id="gaw-a1-843"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="e5l-ZS-CZh" secondAttribute="trailing" constant="4" id="4cq-mf-oOu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Znb-vr-iHJ" secondAttribute="trailing" constant="4" id="4qi-ba-xof"/>
+                            <constraint firstItem="e5l-ZS-CZh" firstAttribute="top" secondItem="9sZ-pV-mi4" secondAttribute="topMargin" constant="8" id="FLb-bc-3fC"/>
+                            <constraint firstItem="Iup-oU-lVr" firstAttribute="leading" secondItem="9sZ-pV-mi4" secondAttribute="leading" constant="12" id="HdA-Mt-Xp7"/>
+                            <constraint firstItem="e5l-ZS-CZh" firstAttribute="leading" secondItem="9sZ-pV-mi4" secondAttribute="leadingMargin" constant="4" id="P7Z-0R-URW"/>
+                            <constraint firstItem="Znb-vr-iHJ" firstAttribute="leading" secondItem="Iup-oU-lVr" secondAttribute="trailing" constant="12" id="RCb-eU-rOw"/>
+                            <constraint firstItem="Znb-vr-iHJ" firstAttribute="top" secondItem="e5l-ZS-CZh" secondAttribute="bottom" constant="12" id="SIY-RJ-fxq"/>
+                            <constraint firstItem="Iup-oU-lVr" firstAttribute="top" secondItem="e5l-ZS-CZh" secondAttribute="bottom" constant="12" id="Toq-GM-lj9"/>
+                            <constraint firstItem="c5T-Xw-Xyf" firstAttribute="top" secondItem="Znb-vr-iHJ" secondAttribute="bottom" constant="45" id="lDy-H6-lJz"/>
+                            <constraint firstItem="c5T-Xw-Xyf" firstAttribute="centerX" secondItem="9sZ-pV-mi4" secondAttribute="centerX" id="nqh-Rb-p99"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="hvw-I6-hE8"/>
+                    <tabBarItem key="tabBarItem" title="Publish" image="tweet" selectedImage="tweetSelected" id="hvw-I6-hE8"/>
+                    <connections>
+                        <outlet property="switchLocation" destination="Iup-oU-lVr" id="bpb-qu-ndH"/>
+                        <outlet property="tweetText" destination="e5l-ZS-CZh" id="etL-FV-FnA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yoq-XX-mam" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2484" y="455"/>
+            <point key="canvasLocation" x="2482.5" y="510.21126760563379"/>
         </scene>
-        <!--Item 1-->
+        <!--Timeline-->
         <scene sceneID="7gx-JQ-HAf">
             <objects>
                 <viewController id="soW-xI-EEg" customClass="TimeLineViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -262,7 +316,7 @@
                             </tableView>
                         </subviews>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="JGJ-9z-zwp"/>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="timeline" selectedImage="timelineSelected" id="JGJ-9z-zwp"/>
                     <connections>
                         <outlet property="tweets" destination="3Cb-xF-CZw" id="lsd-we-n9d"/>
                     </connections>
@@ -291,4 +345,12 @@
             <point key="canvasLocation" x="1470" y="124"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="followers" width="32" height="32"/>
+        <image name="followersSelected" width="32" height="32"/>
+        <image name="timeline" width="32" height="32"/>
+        <image name="timelineSelected" width="32" height="32"/>
+        <image name="tweet" width="32" height="32"/>
+        <image name="tweetSelected" width="32" height="32"/>
+    </resources>
 </document>

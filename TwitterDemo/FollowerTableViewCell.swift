@@ -6,6 +6,9 @@
 //  Copyright © 2017 Luis Guzman. All rights reserved.
 //
 
+/* This class is the model for the cell used for showing the followers information
+ */
+
 import UIKit
 
 class FollowerTableViewCell: UITableViewCell {

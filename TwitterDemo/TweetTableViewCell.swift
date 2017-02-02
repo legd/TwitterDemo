@@ -6,6 +6,9 @@
 //  Copyright © 2017 Luis Guzman. All rights reserved.
 //
 
+/* This class is the cell model used in timeline view 
+ */
+
 import UIKit
 
 class TweetTableViewCell: UITableViewCell {

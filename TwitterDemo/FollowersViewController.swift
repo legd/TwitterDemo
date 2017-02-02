@@ -6,18 +6,26 @@
 //  Copyright © 2017 Luis Guzman. All rights reserved.
 //
 
+/* Class in charge for getting the list of follower and show it
+ */
+
 import UIKit
 
+// struct used as a model for the followers
 struct Follower {
     var name: String?
     var screenName: String?
     var profileImageURL: String?
 }
 
-class FollowersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FollowersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataReceivedDelegate {
     
     @IBOutlet weak var followers: UITableView!
     var followersList = [Follower]()
+    
+    var customActivityIndicator = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    var indicatorLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +34,31 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         followers.delegate = self
         
         let twitter = TwitterAccessAPI.TwitterAPISharedInstance
-        followersList.append(contentsOf: twitter.getUserFollowers())
+        twitter.getUserFollowers(viewControler: self)
         
+        self.displayCustomActivityIndicator(msg: "Cargando seguidores", indicator: true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func displayCustomActivityIndicator(msg:String, indicator:Bool ) {
+        indicatorLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
+        indicatorLabel.text = msg
+        indicatorLabel.textColor = UIColor.white
+        customActivityIndicator = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+        customActivityIndicator.layer.cornerRadius = 15
+        customActivityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        if indicator {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+            activityIndicator.startAnimating()
+            customActivityIndicator.addSubview(activityIndicator)
+        }
+        customActivityIndicator.addSubview(indicatorLabel)
+        view.addSubview(customActivityIndicator)
     }
     
     // MARK: - Protocols implementations 
@@ -53,6 +79,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
                 cell.profileImage.image = UIImage(data: data!)
+                self.customActivityIndicator.removeFromSuperview()
             }
         }
         
@@ -64,6 +91,17 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func setDataSource<T>(list: [T]) {
+        var index = 0
+        
+        while (index < list.count) {
+            self.followersList.append(list[index] as! Follower)
+            index += 1
+        }
+        
+        self.followers.reloadData()
     }
     
 }

@@ -6,9 +6,11 @@
 //  Copyright © 2017 Luis Guzman. All rights reserved.
 //
 
+/* Protocol use to update data in the main thread from an async task
+ */
+
 import Foundation
 
 protocol DataReceivedDelegate {
-    //func setDataSource(list: [TimeLineTweet])
     func setDataSource<T>(list: [T])
 }
